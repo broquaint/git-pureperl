@@ -20,7 +20,7 @@ sub get_object {
         = file( $self->directory, substr( $sha1, 0, 2 ), substr( $sha1, 2 ) );
     return unless -f $filename;
 
-    my $compressed = $filename->slurp;
+    my $compressed = $filename->slurp( iomode => '<:raw' );
     my $data       = uncompress($compressed);
     my ( $kind, $size, $content ) = $data =~ /^(\w+) (\d+)\0(.+)$/s;
     return ( $kind, $size, $content );
