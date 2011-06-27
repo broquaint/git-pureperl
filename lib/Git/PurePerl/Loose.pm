@@ -22,7 +22,7 @@ sub get_object {
 
     my $compressed = $filename->slurp( iomode => '<:raw' );
     my $data       = uncompress($compressed);
-    my ( $kind, $size, $content ) = $data =~ /^(\w+) (\d+)\0(.+)$/s;
+    my ( $kind, $size, $content ) = $data =~ /^(\w+) (\d+)\0(.*)$/s;
     return ( $kind, $size, $content );
 }
 
