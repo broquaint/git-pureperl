@@ -28,6 +28,7 @@ sub BUILD {
     my $filename = $self->filename;
 
     my $fh = IO::File->new($filename) || confess($!);
+    $fh->binmode;
     $self->fh($fh);
 
     my @offsets = (0);
